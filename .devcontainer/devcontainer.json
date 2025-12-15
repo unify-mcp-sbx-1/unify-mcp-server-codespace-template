@@ -1,0 +1,44 @@
+{
+  "name": "CloudBees Unify MCP Server",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+
+  "remoteEnv": {
+    "CLOUDBEES_PERSONAL_ACCESS_TOKEN": "${localEnv:CLOUDBEES_PERSONAL_ACCESS_TOKEN}",
+    "ORGANIZATION_ID": "${localEnv:ORGANIZATION_ID}"
+  },
+
+  "postCreateCommand": "docker pull cloudbees/unify-mcp-server:latest",
+
+  "customizations": {
+    "vscode": {
+      "mcp": {
+        "servers": {
+          "cloudbees-unify": {
+            "command": "docker",
+            "args": [
+              "run",
+              "--rm",
+              "-i",
+              "--env=CLOUDBEES_PERSONAL_ACCESS_TOKEN",
+              "cloudbees/unify-mcp-server:latest",
+              "stdio",
+              "--mode=unify",
+              "--organization-id=${ORGANIZATION_ID}"
+            ],
+            "env": {
+              "CLOUDBEES_PERSONAL_ACCESS_TOKEN": "${CLOUDBEES_PERSONAL_ACCESS_TOKEN}",
+              "ORGANIZATION_ID": "${ORGANIZATION_ID}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
