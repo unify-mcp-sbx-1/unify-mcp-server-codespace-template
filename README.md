@@ -2,9 +2,13 @@
 
 This is a GitHub Codespaces template that automatically configures the CloudBees Unify MCP server for use with GitHub Copilot.
 
+## Getting Started
+
+**First, fork this repository** to your own GitHub organization or user account where you want to run the Codespace. This allows you to configure your own secrets and customize the setup as needed.
+
 ## Prerequisites
 
-Before using this template, you need to configure the following secrets in your GitHub repository or organization:
+Before using this template, you need to configure the following secrets in your forked repository or organization:
 
 ### Required Secrets
 
@@ -33,9 +37,10 @@ Before using this template, you need to configure the following secrets in your 
 
 ### Starting a Codespace
 
-1. Click the **Code** button on the repository
-2. Select the **Codespaces** tab
-3. Click **Create codespace on main**
+1. Navigate to your forked repository
+2. Click the **Code** button on the repository
+3. Select the **Codespaces** tab
+4. Click **Create codespace on main**
 
 The devcontainer will automatically:
 - Install Docker
@@ -78,6 +83,10 @@ If the secrets are not available in your Codespace:
 1. Verify they are set correctly in your repository, organization, or user settings
 2. Restart the Codespace
 3. Check that the secret names match exactly (case-sensitive)
+
+**Important**: If you change secrets in GitHub after creating a Codespace, the changes will **not** be reflected when resuming that Codespace. You must either:
+- **Rebuild** the Codespace (Codespaces: Rebuild Container)
+- **Create a new** Codespace with the updated secrets
 
 ### MCP Server Not Working
 If GitHub Copilot isn't using the MCP server:
