@@ -18,6 +18,11 @@
 
   "customizations": {
     "vscode": {
+      "settings": {
+        "github.copilot.chat.enabledTools": {
+          "cloudbees-unify": true
+        }
+      },
       "mcp": {
         "servers": {
           "cloudbees-unify": {
@@ -30,11 +35,11 @@
               "cloudbees/unify-mcp-server:latest",
               "stdio",
               "--mode=unify",
-              "--organization-id=${ORGANIZATION_ID}"
+              "--organization-id=${env:ORGANIZATION_ID}"
             ],
             "env": {
-              "CLOUDBEES_PERSONAL_ACCESS_TOKEN": "${CLOUDBEES_PERSONAL_ACCESS_TOKEN}",
-              "ORGANIZATION_ID": "${ORGANIZATION_ID}"
+              "CLOUDBEES_PERSONAL_ACCESS_TOKEN": "${env:CLOUDBEES_PERSONAL_ACCESS_TOKEN}",
+              "ORGANIZATION_ID": "${env:ORGANIZATION_ID}"
             }
           }
         }
