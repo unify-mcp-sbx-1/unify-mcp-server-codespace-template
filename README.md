@@ -44,11 +44,19 @@ The devcontainer will automatically:
 
 ### Using the MCP Server with GitHub Copilot
 
-Once your Codespace is running, the CloudBees Unify MCP server is automatically available to GitHub Copilot. Simply use Copilot Chat and ask questions related to CloudBees workflows, pipelines, or other CloudBees Unify capabilities.
+Once your Codespace is running, the CloudBees Unify MCP server is automatically available to GitHub Copilot. Simply start asking questions related to CloudBees workflows, pipelines, or other CloudBees Unify capabilities.
+
+**Important: First-time Tool Approval**
+
+The first time Copilot invokes the MCP server's tools, you'll be prompted to approve tool usage:
+- **Workspace level**: Approves for all sessions in this Codespace (recommended for frictionless experience)
+- **Session level**: Approves only for the current chat session
+
+Note: There is currently no way to configure automatic approval, so this one-time prompt is required.
 
 **How it works:**
-- GitHub Copilot automatically detects the MCP server configuration
-- When you ask CloudBees-related questions, Copilot invokes the MCP server on-demand
+- GitHub Copilot detects the MCP server configuration
+- When you ask CloudBees-related questions, Copilot automatically invokes the MCP server
 - The server provides tools and context to help Copilot answer your questions
 
 ## Configuration
@@ -73,6 +81,7 @@ If the secrets are not available in your Codespace:
 
 ### MCP Server Not Working
 If GitHub Copilot isn't using the MCP server:
-1. Ensure you have GitHub Copilot Chat enabled
-2. Check that the devcontainer was properly created
+1. Verify you have GitHub Copilot Chat enabled
+2. Check that the devcontainer was properly created (Docker image should be pulled)
 3. Try asking specific CloudBees-related questions to trigger the MCP server
+4. Check the Output panel (View → Output → "MCP" or "GitHub Copilot Chat") for any error messages
